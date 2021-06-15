@@ -1,11 +1,6 @@
 import './genres-selector.scss';
-import {fetchGenres} from '../../redux';
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
 
 export default function GenresSelector({genres, handleChangeGenre}) {
-
-    const dispatch = useDispatch();
 
     return (
         <select
