@@ -3,8 +3,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
-import './footer.scss';
 import Logo from '../logo/logo';
+
+import './footer.scss';
 
 export default function Footer() {
     return (

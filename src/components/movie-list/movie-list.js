@@ -5,8 +5,6 @@ import {fetchFilms} from '../../redux';
 import PosterPreview from '../poster-preview/poster-preview';
 import ButtonInfo from '../button-info/button-info';
 import {Link} from 'react-router-dom';
-import Banner from '../banner/banner';
-
 
 export default function MovieList() {
 
@@ -46,9 +44,6 @@ export default function MovieList() {
                     <ButtonInfo text={'See more'}/>
                 </Link>
             </div>
-            <Link to={'/movies'}>
-                <Banner src={'images/banner-1.png'}/>
-            </Link>
         </section>
     );
 }

@@ -1,7 +1,7 @@
-import './change-mode.scss';
-
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
+
+import './change-mode.scss';
 
 export default function ChangeMode({activeMode}) {
 

@@ -1,8 +1,9 @@
-import './poster-preview.scss';
-
-import {Link} from 'react-router-dom';
-import StarIcon from '@material-ui/icons/Star';
 import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
+
+import StarIcon from '@material-ui/icons/Star';
+
+import './poster-preview.scss';
 
 export default function PosterPreview ({film}) {
 

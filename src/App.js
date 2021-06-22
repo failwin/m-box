@@ -1,4 +1,4 @@
-import './App.scss';
+import {useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,8 +8,9 @@ import Home from './pages/home/home';
 import Movies from './pages/movies/movies';
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import {useState} from 'react';
 import MovieItemInfo from './pages/movie-item-info/movie-item-info';
+
+import './App.scss';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
       <Router>
       <Header activeMode={activeMode}/>
         <Switch>
-            <Route exact path={'/'} render={(props) => <Home />} />
+            <Route exact path={'/'} component={Home} />
             <Route exact path={'/movies'} render={() => <Movies/>} />
             <Route exact path={'/movies/:id'} render={(props) => {
                 let {match:{params:{id}}} = props;

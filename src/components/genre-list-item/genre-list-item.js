@@ -1,5 +1,7 @@
-import './genre-list-item.scss';
 import {Link} from 'react-router-dom';
+
+import './genre-list-item.scss';
+
 
 export default function GenreListItem({src, title, color}) {
     return (
