@@ -10,11 +10,10 @@ export default function ChangeMode({activeMode}) {
     const changeTheme = () => {
         if (theme === 'light') {
            localStorage.setItem('theme', null);
-            activeMode('dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-            activeMode('light');
+            return activeMode('dark');
         }
+        localStorage.setItem('theme', 'light');
+        return activeMode('light');
     }
 
     return (

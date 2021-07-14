@@ -9,12 +9,12 @@ import GenresSelector from '../../components/genres-selector/genres-selector';
 
 export default function Movies(props) {
 
-    const {selectedGenre, genres} = useSelector(({genres}) => genres);
+    const {selectedGenre, genres, selectedByBlock} = useSelector(({genres}) => genres);
 
     const dispatch = useDispatch();
 
     const [page, setPage] = useState(1);
-    const [activeGenre, setActiveGenre] = useState(28);
+    const [activeGenre, setActiveGenre] = useState(selectedByBlock  ? selectedByBlock : 28);
 
     useEffect(() => {
         dispatch(fetchGenres(page, activeGenre));

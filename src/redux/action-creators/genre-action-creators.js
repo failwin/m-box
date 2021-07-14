@@ -1,4 +1,4 @@
-import {SET_GENRES, SELECTED_GENRE} from '../action-types';
+import {SET_GENRES, SELECTED_GENRE, SELECTED_BY_BLOCK} from '../action-types';
 import {setFilmsLoading, resetFilmsLoading} from '../../redux';
 
 export const fetchGenres = (page, id) => async (dispatch) => {
@@ -7,6 +7,8 @@ export const fetchGenres = (page, id) => async (dispatch) => {
     const baseUrl = 'https://api.themoviedb.org/3';
     try {
         dispatch(setFilmsLoading());
+
+
 
         const responseGenresFilter = await fetch(`${baseUrl}/discover/movie?page=${page}&sort_by=popularity.desc&api_key=${key}&with_genres=${id}`);
         const genresFiltered = await responseGenresFilter.json();
@@ -27,4 +29,5 @@ export const fetchGenres = (page, id) => async (dispatch) => {
 
 export const setGenres = (payload) => ({type: SET_GENRES, payload});
 export const selectedGenre = (payload) => ({type: SELECTED_GENRE, payload});
+export const selectedByBlock = (payload) => ({type: SELECTED_BY_BLOCK, payload});
 

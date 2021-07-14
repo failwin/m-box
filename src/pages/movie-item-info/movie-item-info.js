@@ -3,13 +3,15 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {fetchFilms} from '../../redux';
 import StarRatings from 'react-star-ratings';
+import { useParams } from "react-router-dom";
 
-export default function MovieItemInfo({filmId}) {
+export default function MovieItemInfo() {
+    let {id} = useParams();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchFilms(filmId));
+        dispatch(fetchFilms(id));
     }, []);
 
     const {selectedFilm, imgUrl, isFilmsLoading} = useSelector(({films}) => films);

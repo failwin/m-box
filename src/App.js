@@ -25,12 +25,9 @@ function App() {
       <Router>
       <Header activeMode={activeMode}/>
         <Switch>
-            <Route exact path={'/'} component={Home} />
+            <Route exact path={'/'} render={() => <Home/>} />
             <Route exact path={'/movies'} render={() => <Movies/>} />
-            <Route exact path={'/movies/:id'} render={(props) => {
-                let {match:{params:{id}}} = props;
-                return <MovieItemInfo filmId={id}/>}
-            } />
+            <Route exact path={'/movies/:id'} render={() => <MovieItemInfo/>}/>
         </Switch>
       <Footer />
       </Router>
