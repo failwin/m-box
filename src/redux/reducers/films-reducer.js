@@ -1,11 +1,12 @@
-import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM} from '../action-types';
+import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM, SET_FILMS_BY_NAME} from '../action-types';
 
 const initialState = {
     topFilms: [],
     popularFilms: [],
     isFilmsLoading: false,
     selectedFilm: null,
-    imgUrl: 'https://www.themoviedb.org/t/p/w220_and_h330_face'
+    imgUrl: 'https://www.themoviedb.org/t/p/',
+    findByName: []
 }
 
 export const filmsReducer = (state = initialState, action) => {
@@ -38,6 +39,12 @@ export const filmsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFilmsLoading: false
+            }
+        }
+        case SET_FILMS_BY_NAME : {
+            return {
+                ...state,
+                findByName: action.payload
             }
         }
 

@@ -10,6 +10,7 @@ import GenresSelector from '../../components/genres-selector/genres-selector';
 export default function Movies(props) {
 
     const {selectedGenre, genres, selectedByBlock} = useSelector(({genres}) => genres);
+    const {findByName} = useSelector(({films}) => films);
 
     const dispatch = useDispatch();
 
@@ -20,14 +21,15 @@ export default function Movies(props) {
         dispatch(fetchGenres(page, activeGenre));
     }, [page, activeGenre]);
 
+    const handlePageClick = (e, page) => {
+        setPage(e.selected + 1);
+    }
 
     const handleChangeGenre = (id) => {
         setActiveGenre(id);
     }
 
-    const handlePageClick = (e) => {
-        setPage(e.selected + 1);
-    }
+    const sortBySelector = findByName.results ? findByName : selectedGenre;
 
     return (
         <section className='all-movies'>
@@ -36,20 +38,20 @@ export default function Movies(props) {
                 <GenresSelector handleChangeGenre={handleChangeGenre} genres={genres}/>
             </h2>
             {
-                selectedGenre && selectedGenre.results ? (
+                sortBySelector && sortBySelector.results ? (
                     <>
                         <ul className='movies-list'>
                             {
-                                selectedGenre.results.map(film => <PosterPreview key={film.id} film={film}/>)
+                                sortBySelector.results.map(film => <PosterPreview key={film.id} film={film}/>)
                             }
                         </ul>
                         <div className="pagination">
                             <ReactPaginate
-                                pageCount={selectedGenre.total_pages}
+                                pageCount={sortBySelector.total_pages}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePageClick}
-                                initialPage={selectedGenre.page - 1}
+                                initialPage={sortBySelector.page - 1}
                                 activeClassName={'active-page'}
                                 disableInitialCallback={true}
                             />

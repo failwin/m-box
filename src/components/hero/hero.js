@@ -1,14 +1,15 @@
-import './hero.scss';
+import {Link} from "react-router-dom";
+import StarIcon from "@material-ui/icons/Star";
+import ButtonInfo from "../button-info/button-info";
 
-import StarIcon from '@material-ui/icons/Star';
-import ButtonInfo from '../button-info/button-info';
+import "./hero.scss";
 
 export default function Hero() {
     return (
         <section className="hero" style={{backgroundImage: "url('images/bg-top2.png')"}}>
             <div className="hero-offer">
                 <h1 className="hero-title">
-                    Venom 2
+                    Venom
                 </h1>
                 <h4 className="hero-rate">
                     2021
@@ -16,18 +17,21 @@ export default function Hero() {
                         18+
                     </span>
                     <div className="hero-rate-star">
-                        <StarIcon style={{color: 'yellow'}} />
+                        <StarIcon style={{color: 'yellow'}}/>
                         9
                     </div>
 
                 </h4>
                 <p className="hero-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae earum et eveniet officia porro,
-                    sint suscipit voluptate? Ab, amet aperiam at, corporis cum cumque delectus eaque eius et eveniet
-                    exercitationem expedita illum itaque labore minus modi molestiae natus numquam placeat.
+                    Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally
+                    becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his
+                    newfound powers to protect the world from a shadowy organization looking for a symbiote of their
+                    own.
                 </p>
                 <div className="hero-btns-group">
-                    <ButtonInfo text={'More Information'}/>
+                    <Link to={'/movies/335983'}>
+                        <ButtonInfo text={'More Information'}/>
+                    </Link>
                 </div>
             </div>
         </section>
