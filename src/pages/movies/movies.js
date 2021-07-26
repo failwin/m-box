@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {fetchGenres} from "../../redux";
 import GenresSelector from '../../components/genres-selector/genres-selector';
 
-export default function Movies(props) {
+export default function Movies() {
 
     const {selectedGenre, genres, selectedByBlock} = useSelector(({genres}) => genres);
     const {findByName} = useSelector(({films}) => films);

@@ -1,11 +1,11 @@
 import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-
+import {Link, useLocation} from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
 
 import './poster-preview.scss';
 
 export default function PosterPreview ({film}) {
+    const {pathname} = useLocation();
 
     const imgUrl = useSelector((state) => state.films.imgUrl);
 
@@ -13,7 +13,7 @@ export default function PosterPreview ({film}) {
 
     return (
         <li className='poster-preview'>
-            <Link to={`movies/${id}`}>
+            <Link to={`${pathname}/${id}`}>
                 <div className="poster-preview-img">
                     <img src={poster_path ? imgUrl + 'w500/' + poster_path: 'images/default-img.jpg'} alt='Preview poster'/>
                     <div className="poster-preview-wrapper">

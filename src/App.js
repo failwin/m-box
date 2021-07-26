@@ -26,7 +26,7 @@ function App() {
       <Header activeMode={activeMode}/>
         <Switch>
             <Route exact path={'/'} component={Home} />
-            <Route exact path={'/movies'} render={() => <Movies/>} />
+            <Route exact path={'/movies'} render={(props) => <Movies />} />
             <Route exact path={'/movies/:id'} render={() => <MovieItemInfo/>}/>
         </Switch>
       <Footer />
@@ -36,3 +36,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
