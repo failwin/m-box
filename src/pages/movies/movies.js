@@ -19,17 +19,19 @@ export default function Movies() {
 
     useEffect(() => {
         dispatch(fetchGenres(page, activeGenre));
-    }, [page, activeGenre]);
+    },[page, activeGenre]);
 
-    const handlePageClick = (e, page) => {
+    const handlePageClick = (e) => {
         setPage(e.selected + 1);
     }
 
     const handleChangeGenre = (id) => {
         setActiveGenre(id);
+        setPage(1);
     }
 
     const sortBySelector = findByName.results ? findByName : selectedGenre;
+    console.log(sortBySelector);
 
     return (
         <section className='all-movies'>
@@ -51,7 +53,8 @@ export default function Movies() {
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePageClick}
-                                initialPage={sortBySelector.page - 1}
+                                initialPage={page - 1}
+                                forcePage={page - 1}
                                 activeClassName={'active-page'}
                                 disableInitialCallback={true}
                             />

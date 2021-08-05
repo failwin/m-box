@@ -5,7 +5,6 @@ import ChangeMode from '../change-mode/change-mode';
 import Cabinet from '../cabinet/cabinet';
 import SearchPanel from '../search-panel/search-panel';
 import Logo from '../logo/logo';
-import {useState} from 'react';
 
 export default function Header({activeMode}) {
 
