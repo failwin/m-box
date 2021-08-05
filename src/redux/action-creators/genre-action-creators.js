@@ -8,8 +8,6 @@ export const fetchGenres = (page, id) => async (dispatch) => {
     try {
         dispatch(setFilmsLoading());
 
-
-
         const responseGenresFilter = await fetch(`${baseUrl}/discover/movie?page=${page}&sort_by=popularity.desc&api_key=${key}&with_genres=${id}`);
         const genresFiltered = await responseGenresFilter.json();
 

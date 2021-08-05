@@ -1,4 +1,4 @@
-import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM, SET_FILMS_BY_NAME} from "../action-types";
+import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM, SET_FILMS_BY_NAME, SET_PAGE, SET_SEARCH_FILM} from "../action-types";
 
 const key = '213ab3cf8469b8d83473bc75057b9059';
 const baseUrl = 'https://api.themoviedb.org/3';
@@ -37,11 +37,13 @@ export const fetchFilms = (id) => async (dispatch) => {
     }
 }
 
-export const fetchFindFilmByName = (filmName) => async (dispatch) =>{
+export const fetchFindFilmByName = (filmName, page) => async (dispatch) =>{
     try {
         dispatch(setFilmsLoading());
+        dispatch(setPage(page));
+        dispatch(setSearchFilm(filmName));
 
-        const response = await fetch(`${baseUrl}/search/movie?api_key=${key}&language=en-US&page=1&include_adult=false&query=${filmName}`)
+        const response = await fetch(`${baseUrl}/search/movie?language=en-US&page=${page}&include_adult=false&query=${filmName}&api_key=${key}`)
         const filmByName = await response.json();
 
         dispatch(setFilmsByName(filmByName));
@@ -59,3 +61,5 @@ export const resetFilmsLoading = () => ({type: RESET_FILMS_LOADING});
 export const setFilmsLoading = () => ({type: SET_FILMS_LOADING});
 export const selectedFilm = (payload) => ({type: SELECTED_FILM, payload});
 export const setFilmsByName = (payload) => ({type: SET_FILMS_BY_NAME, payload});
+export const setPage = (payload) => ({type: SET_PAGE, payload});
+export const setSearchFilm = (payload) => ({type: SET_SEARCH_FILM, payload});

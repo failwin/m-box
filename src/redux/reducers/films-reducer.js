@@ -1,10 +1,12 @@
-import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM, SET_FILMS_BY_NAME} from '../action-types';
+import {RESET_FILMS_LOADING, SET_TOP_FILMS, SET_POPULAR_FILMS, SET_FILMS_LOADING, SELECTED_FILM, SET_FILMS_BY_NAME, SET_PAGE, SET_SEARCH_FILM} from '../action-types';
 
 const initialState = {
     topFilms: [],
     popularFilms: [],
     isFilmsLoading: false,
     selectedFilm: null,
+    page: 1,
+    searchFilm: '',
     imgUrl: 'https://www.themoviedb.org/t/p/',
     findByName: []
 }
@@ -45,6 +47,18 @@ export const filmsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 findByName: action.payload
+            }
+        }
+        case SET_PAGE : {
+            return {
+                ...state,
+                page: action.payload
+            }
+        }
+        case SET_SEARCH_FILM : {
+            return {
+                ...state,
+                searchFilm: action.payload
             }
         }
 
