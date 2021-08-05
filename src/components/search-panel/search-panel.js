@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchFindFilmByName, setSearchFilm} from "../../redux";
+import {fetchFindFilmByName, setPage, setSearchFilm} from "../../redux";
 
 import './search-panel.scss';
 
@@ -14,6 +14,7 @@ export default function SearchPanel() {
     const {pathname} = useLocation();
 
     const handleFindFilm = (e) => {
+        dispatch(setPage(1));
         dispatch(setSearchFilm(e.target.value));
     }
 
