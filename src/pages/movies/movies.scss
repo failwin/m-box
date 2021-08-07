@@ -1,4 +1,5 @@
 .all-movies {
+  padding: 0 50px;
 
   &-title {
     text-align: left;
@@ -28,7 +29,7 @@
       color: white;
 
       &:hover {
-        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);;
       }
 
     }

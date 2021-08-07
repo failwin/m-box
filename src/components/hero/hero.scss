@@ -12,13 +12,13 @@
     right: 5%;
     top: 40%;
     transform: translateY(-50%);
-    max-width: 500px;
+    max-width: 40%;
     color: white;
   }
 
   &-title {
-    margin: 0;
     margin-bottom: 25px;
+    text-align: center;
     font-size: 90px;
     font-family: 'Marcellus', serif;
   }
@@ -44,7 +44,7 @@
 
   &-description {
     text-align: justify;
-    color: #C2C2C2;
+    color: #fff;
     font-size: 18px;
   }
 

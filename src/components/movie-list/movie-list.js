@@ -5,8 +5,6 @@ import {fetchFilms} from '../../redux';
 import PosterPreview from '../poster-preview/poster-preview';
 import ButtonInfo from '../button-info/button-info';
 import {Link} from 'react-router-dom';
-import Banner from '../banner/banner';
-
 
 export default function MovieList() {
 
@@ -24,17 +22,6 @@ export default function MovieList() {
 
     return (
         <section className='movies'>
-            <div className="movies-top">
-                <h2 className='movies-title'>Top Films</h2>
-                <ul className='movies-list'>
-                    {
-                        topFilms.map(topFilms => <PosterPreview key={topFilms.id} film={topFilms}/>)
-                    }
-                </ul>
-                <Link to={'/movies'}>
-                    <ButtonInfo text={'See more'}/>
-                </Link>
-            </div>
             <div className="movies-popular">
                 <h2 className='movies-title'>Popular Films</h2>
                 <ul className='movies-list'>
@@ -46,9 +33,17 @@ export default function MovieList() {
                     <ButtonInfo text={'See more'}/>
                 </Link>
             </div>
-            <Link to={'/movies'}>
-                <Banner src={'images/banner-1.png'}/>
-            </Link>
+            <div className="movies-top">
+                <h2 className='movies-title'>Top Films</h2>
+                <ul className='movies-list'>
+                    {
+                        topFilms.map(topFilms => <PosterPreview key={topFilms.id} film={topFilms}/>)
+                    }
+                </ul>
+                <Link to={'/movies'}>
+                    <ButtonInfo text={'See more'}/>
+                </Link>
+            </div>
         </section>
     );
 }

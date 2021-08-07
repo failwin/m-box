@@ -1,6 +1,6 @@
-import './logo.scss';
-
 import {Link} from 'react-router-dom';
+
+import './logo.scss';
 
 export default function logo() {
     return (

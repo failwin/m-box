@@ -1,8 +1,9 @@
-import {SET_GENRES, SELECTED_GENRE} from '../action-types';
+import {SET_GENRES, SELECTED_GENRE, SELECTED_BY_BLOCK} from '../action-types';
 
 const initialState = {
     genres: [],
-    selectedGenre: []
+    selectedGenre: [],
+    selectedByBlock: null
 }
 
 export const genresReducer = (state = initialState, action) => {
@@ -17,6 +18,12 @@ export const genresReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedGenre: action.payload
+            }
+        }
+        case SELECTED_BY_BLOCK : {
+            return {
+                ...state,
+                selectedByBlock: action.payload
             }
         }
 

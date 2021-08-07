@@ -1,0 +1,20 @@
+.search-panel {
+  margin-left: 30px;
+
+  &-input {
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    width: 100%;
+    max-width: 400px;
+    font-weight: 700;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-weight: 700;
+    }
+  }
+}

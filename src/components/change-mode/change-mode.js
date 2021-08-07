@@ -1,7 +1,7 @@
-import './change-mode.scss';
-
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
+
+import './change-mode.scss';
 
 export default function ChangeMode({activeMode}) {
 
@@ -10,11 +10,10 @@ export default function ChangeMode({activeMode}) {
     const changeTheme = () => {
         if (theme === 'light') {
            localStorage.setItem('theme', null);
-            activeMode('dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-            activeMode('light');
+            return activeMode('dark');
         }
+        localStorage.setItem('theme', 'light');
+        return activeMode('light');
     }
 
     return (

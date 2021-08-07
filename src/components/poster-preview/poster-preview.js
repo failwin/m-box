@@ -1,8 +1,8 @@
-import './poster-preview.scss';
-
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
-import {useSelector} from 'react-redux';
+
+import './poster-preview.scss';
 
 export default function PosterPreview ({film}) {
 
@@ -14,7 +14,7 @@ export default function PosterPreview ({film}) {
         <li className='poster-preview'>
             <Link to={`movies/${id}`}>
                 <div className="poster-preview-img">
-                    <img src={poster_path ? imgUrl + poster_path: 'images/default-img.jpg'} alt='Preview poster'/>
+                    <img src={poster_path ? imgUrl + 'w500/' + poster_path: 'images/default-img.jpg'} alt='Preview poster'/>
                     <div className="poster-preview-wrapper">
                         <h5 className='poster-preview-wrapper-genre'>Release date: {release_date}</h5>
                         <p className="poster-preview-wrapper-description">
