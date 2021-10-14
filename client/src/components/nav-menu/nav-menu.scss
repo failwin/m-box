@@ -1,0 +1,43 @@
+.menu-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+  margin-left: 50px;
+
+  &-link {
+    color: #C2C2C2;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s all;
+    position: relative;
+    
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: #fff;
+      width: 0%;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      transition: 0.4s all;
+    }
+
+    &:hover {
+      color: #fff;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &.active {
+      color: #fff;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.light-mode {
+  background-color: #ffffff;
+
+  & .movies-title,
+  .hero-description,
+  .hero-rate,
+  .footer a,
+  .all-movies-title,
+  .menu-list-link,
+  h1 {
+    color: #000000!important;
+    
+    &::after {
+      background-color: #000!important;
+    }
+  }
+  
+  & a:hover {
+    border-bottom-color: #000!important;
+  }
+
+  & .search-panel-input {
+    border: 2px solid #000;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}

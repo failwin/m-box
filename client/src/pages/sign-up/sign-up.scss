@@ -1,0 +1,30 @@
+.sign-up {
+  &-form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ffffff;
+    width: 500px;
+    padding: 50px 25px;
+    margin: 50px auto;
+    border-radius: 10px;
+
+    & input {
+      margin: 0 auto 30px;
+      padding: 0 20px;
+      width: 300px;
+      height: 40px;
+      border-radius: 30px;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &-submit{
+    width: 200px !important;
+    background-color: lightgreen;
+    cursor: pointer;
+  }
+}
