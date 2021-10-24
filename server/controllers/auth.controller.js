@@ -1,36 +1,49 @@
-const { passwordHasher } = require('../helpers');
-const { User } = require('../dataBase');
-const { errorHandler, errorMessages } = require('../errors');
-const { responseMessagesEnum } = require('../constants');
+const { responseMessagesEnum, constants } = require('../constants');
+const { userServices, authServices } = require('../services');
+
+
+// controller
+//
+// service
+//
+// helpers
+//
+// data access leyer - usersDal
+// cretae/get/update
+//
+// mongo
+// mysql
+
 
 module.exports = {
-    createUser: async (req, res, next) => {
+    createProfile: async (req, res, next) => {
         try {
-            const { password } = req.body;
+            const user = await userServices.createUser(req.body);
 
-            const hashedPassword = await passwordHasher.hash(password);
-            const createdUser = await User.create({...req.body, password: hashedPassword});
+            res.status(responseMessagesEnum.USER_CREATED.code).json(user);
+        } catch (e) {
+            next(e);
 
-            res.status(responseMessagesEnum.USER_CREATED.code).json(createdUser);
+        }
+    },
+
+    loginProfile: async (req, res, next) => {
+        try {
+            const loginUser = await authServices.login(req.body)
+
+            res.json(loginUser);
         } catch (e) {
             next(e);
         }
     },
 
-    loginUser: async (req, res, next) => {
+    logoutProfile: async (req, res, next) => {
         try {
-            const { password, email } = req.body;
+            const token = req.get(constants.AUTHORIZATION);
 
-            const userByEmail = await User.findOne({email});
+            await authServices.logout(token);
 
-            if (!userByEmail) {
-                throw new errorHandler(404, errorMessages.WRONG_EMAIL_OR_PASSWORD.message, errorMessages.WRONG_EMAIL_OR_PASSWORD.code);
-            }
-
-            await passwordHasher.compare(userByEmail.password, password);
-
-            res.json(userByEmail);
-
+            res.status(204).json('success');
         } catch (e) {
             next(e);
         }

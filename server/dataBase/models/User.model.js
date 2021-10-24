@@ -1,5 +1,5 @@
 const { Schema, model} = require('mongoose');
-const { userRolesEnum } = require('../../constants');
+const { dataBaseTableEnum, userRolesEnum } = require('../../constants');
 
 const userSchema = new Schema({
     name: {
@@ -8,22 +8,19 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: true
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        select: false
     },
     role: {
         type: String,
         required: true,
         enum: Object.values(userRolesEnum),
         default: userRolesEnum.USER
-    },
-    tasks: {
-        type: Array,
-        default: []
     }
 }, { timestamps: true });
 
-module.exports = model(userRolesEnum.USER, userSchema);
+module.exports = model(dataBaseTableEnum.USER, userSchema);

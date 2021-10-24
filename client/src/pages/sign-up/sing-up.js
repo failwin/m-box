@@ -1,20 +1,32 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
+import fetchRequests from "../../utils/fetchRequest";
+
 import './sign-up.scss';
-import fetchRequest from "../../utils/fetchRequest";
+
 
 export default function SignUp() {
+    const history = useHistory();
 
     const [signUpData, setSingUpData] = useState({email:'', password: '', name: ''});
+    const [errorRequest, setErrorRequest] = useState('');
 
     const signUpHandler = (e) => {
         const {name, value} = e.target;
         setSingUpData({...signUpData, [name]:value});
-        console.log(signUpData);
     }
     const handleSubmit = async e => {
         e.preventDefault();
 
-        const req = await fetchRequest.post('http://localhost:4000/auth/sign-up', signUpData);
+        const req = await fetchRequests.signUpUser(signUpData);
+
+        localStorage.setItem('user', JSON.stringify(req));
+
+        if(req.message) {
+            setErrorRequest(req.message);
+        } else {
+            history.push('/auth/sign-in');
+        }
     }
 
     return (
@@ -22,7 +34,10 @@ export default function SignUp() {
             <input type="text" className="sign-up-name" placeholder='name' name='name' required onChange={signUpHandler}/>
             <input type="text" className="sign-up-name" placeholder='email' name='email' required onChange={signUpHandler}/>
             <input type="text" className="sign-up-password" placeholder='password' name='password' required onChange={signUpHandler}/>
-            <input type="submit" className="sign-up-submit" value='send'/>
+            <input type="submit" className="sign-up-submit" value='send' />
+            {
+                errorRequest && <div className='sign-up-error'>{errorRequest}</div>
+            }
         </form>
     );
 }

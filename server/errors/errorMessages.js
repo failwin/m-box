@@ -22,6 +22,16 @@ module.exports = {
     CANT_CHANGE_ID: {
         message: "You can't change id",
         code: '400.0'
+    },
+
+    USER_NOT_AUTHORIZED: {
+        message: "No token",
+        code: '401.0'
+    },
+
+    WRONG_TOKEN: {
+        message: "Wrong token",
+        code: '401.1'
     }
 
 }

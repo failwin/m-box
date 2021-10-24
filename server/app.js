@@ -1,8 +1,7 @@
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
 const _mongooseConector = require('./dbConector/dbConector');
-
+require('dotenv').config();
 const app = express();
 
 _mongooseConector();
@@ -11,12 +10,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const { authRouter, usersRouter } = require('./routes');
+const { authRouter, userRouter } = require('./routes');
 const { constants:{PORT} } = require('../server/constants');
 const { errorMessages } = require('../server/errors');
 
 app.use('/auth', authRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 
 app.use('*', _notFoundHandler);
 app.use(_handleErrors);

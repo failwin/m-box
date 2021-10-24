@@ -1,18 +1,20 @@
-const { User } = require('../dataBase');
-const { userValidator } = require('../validators');
+const {User} = require('../dataBase');
+const {errorHandler} = require('../errors');
+const {userValidator} = require('../validators');
 
 module.exports = {
     checkIsUserPresent: async (req, res, next) => {
         try {
-            const { userId } = req.params;
+            const {userId} = req.params;
 
             const userById = await User.findById(userId);
 
-            if(!userById) {
+            if (!userById) {
                 throw new errorHandler(404, errorMessages.USER_NOT_FOUND.message, errorMessages.USER_NOT_FOUND.code);
             }
 
             req.user = userById;
+
             next();
         } catch (e) {
             next(e);
@@ -21,9 +23,9 @@ module.exports = {
 
     checkUserValidity: async (req, res, next) => {
         try {
-            const { error } = userValidator.createUser.validate(req.body);
+            const {error} = userValidator.createUser.validate(req.body);
 
-            if(error) {
+            if (error) {
                 throw new Error(error.details[0].message);
             }
 
