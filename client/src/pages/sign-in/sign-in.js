@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import {useDispatch} from "react-redux";
+import {setAuthUser} from "../../redux";
 import { Link, useHistory } from 'react-router-dom';
 import fetchRequests from '../../utils/fetchRequest';
 import './sing-in.scss';
@@ -6,6 +8,8 @@ import './sing-in.scss';
 export default function SignIn() {
 
     const history = useHistory();
+    const dispatch = useDispatch();
+
     const [logInData, setLoginData] = useState({email:'', password: ''});
     const [errorRequest, setErrorRequest] = useState('');
 
@@ -23,6 +27,7 @@ export default function SignIn() {
         if(req.message) {
             setErrorRequest(req.message);
         } else {
+            dispatch(setAuthUser(true));
             history.push(`/user/${req.user.id}`);
         }
     }

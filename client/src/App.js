@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useSelector} from "react-redux";
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,11 +18,15 @@ import './App.scss';
 
 function App() {
 
-    const [theme, setTheme]= useState(localStorage.getItem('theme'));
+    const {isAuth} = useSelector(({authUser}) => authUser);
 
+    const [theme, setTheme] = useState();
     const activeMode = mode => {
         setTheme(mode);
     };
+    useEffect(() => {
+        setTheme(localStorage.getItem('theme'));
+    }, []);
 
     return (
     <div className={theme !== 'light' ? 'App' : 'App light-mode'}>
@@ -29,12 +34,15 @@ function App() {
       <Header activeMode={activeMode}/>
         <Switch>
             <Route exact path={'/'} component={Home} />
-            <Route exact path={'/auth/sign-in'} component={SingIn} />
-            <Route exact path={'/auth/sign-up'} component={SignUp} />
-            <Route exact path={'/user/:userId'} component={Profile} />
             <Route exact path={'/movies'} render={(props) => <Movies />} />
             <Route exact path={'/movies/:id'} render={() => <MovieItemInfo/>}/>
-            <Route exact path={'/*'} component={Home} />
+            <Route exact path={'/auth/sign-in'} component={SingIn} />
+            <Route exact path={'/auth/sign-up'} component={SignUp} />
+
+            {
+                isAuth && <Route exact path={'/user/:userId'} component={Profile} />
+            }
+            <Route path={'/*'} component={Home} />
         </Switch>
       <Footer />
       </Router>

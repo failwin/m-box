@@ -14,7 +14,7 @@ module.exports = {
 
         await passwordHasher.compare(userByEmail.password, password);
 
-        const tokenPair = oAuthTokenGenerator.generateTokenPair();
+        const tokenPair = oAuthTokenGenerator.generateTokenPair({email});
 
         await OAuth.create({...tokenPair, user: userByEmail});
 
