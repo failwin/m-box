@@ -20,8 +20,6 @@ export default function SignUp() {
 
         const req = await fetchRequests.signUpUser(signUpData);
 
-        localStorage.setItem('user', JSON.stringify(req));
-
         if(req.message) {
             setErrorRequest(req.message);
         } else {

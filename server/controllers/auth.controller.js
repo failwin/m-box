@@ -18,18 +18,17 @@ const { userServices, authServices } = require('../services');
 module.exports = {
     createProfile: async (req, res, next) => {
         try {
-            const user = await userServices.createUser(req.body);
+            await userServices.createUser(req.body);
 
-            res.status(responseMessagesEnum.USER_CREATED.code).json(user);
+            res.status(responseMessagesEnum.USER_CREATED.code).json(responseMessagesEnum.USER_CREATED.messages);
         } catch (e) {
             next(e);
-
         }
     },
 
     loginProfile: async (req, res, next) => {
         try {
-            const loginUser = await authServices.login(req.body)
+            const loginUser = await authServices.login(req.body);
 
             res.json(loginUser);
         } catch (e) {
