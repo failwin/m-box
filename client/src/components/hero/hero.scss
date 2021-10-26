@@ -1,0 +1,58 @@
+.hero {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  position: relative;
+  text-align: right;
+  margin-top: 30px;
+  height: 85vh;
+
+  &-offer {
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    transform: translateY(-50%);
+    max-width: 40%;
+    color: white;
+  }
+
+  &-title {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 90px;
+    font-family: 'Marcellus', serif;
+  }
+
+  &-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 170px;
+    font-size: 18px;
+
+    &-year {
+      border: 1px solid #326CFF;
+      border-radius: 30px;
+      padding: 3px 10px;
+    }
+
+    &-star {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-description {
+    text-align: justify;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  &-btns-group {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+

@@ -1,0 +1,16 @@
+.cabinet {
+  margin-left: auto;
+
+  & img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid lightgreen;
+  }
+  
+  &-btn {
+    color: white;
+    background: linear-gradient(#26fff2, #326cff);
+    margin: 10px;
+  }
+}

@@ -1,0 +1,61 @@
+.profile {
+  padding: 50px 80px 100px;
+  &-title {
+    text-align: left;
+  }
+
+  &-film {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    cursor: pointer;
+
+    &.watched {
+      border: 1px solid #248948;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    &-wrapper {
+      display: flex;
+      width: 100px;
+
+      & span {
+        color: lightgreen;
+      }
+    }
+
+    &-delete {
+      margin-left: auto;
+      color: crimson;
+    }
+  }
+
+  &-form {
+    margin-top: 30px;
+    text-align: left;
+
+    &-input {
+      height: 50px;
+      width: 60%;
+      border-radius: 30px;
+      border: none;
+      margin-right: 20px;
+      padding: 0px 30px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-submit {
+      height: 50px;
+      background: linear-gradient(#26fff2, #248948);
+      color: white;
+    }
+  }
+}

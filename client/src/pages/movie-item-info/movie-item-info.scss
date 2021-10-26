@@ -1,0 +1,102 @@
+.movie-info {
+  height: 100%;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.2) center top/cover no-repeat;
+  z-index: 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  &-wrapper {
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    position: relative;
+  }
+
+  &-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: darkorange;
+    font-family: 'Marcellus', serif;
+  }
+
+  &-picture {
+    margin-left: 50px;
+
+    & img {
+      object-fit: cover;
+      border-radius: 10px;
+      width: 400px;
+      height: 60vh;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  &-description {
+    max-width: 50%;
+    margin: 50px;
+
+    &-title {
+      font-size: 20px;
+      color: orange;
+      font-family: 'Marcellus', serif;
+    }
+
+    &-text {
+      font-size: 16px;
+      max-width: 900px;
+      text-align: justify;
+    }
+  }
+
+  &-budget {
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: right;
+
+    & span {
+      font-weight: 700;
+      color: orange;
+      font-family: 'Marcellus', serif;
+    }
+  }
+
+  &-star {
+    font-size: 20px;
+    margin-bottom: 50px;
+    color: orange;
+    font-weight: 700;
+  }
+
+  &-companies-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    margin-top: 50px;
+  }
+
+  &-trailer {
+  text-align: left;
+    & iframe {
+      width: 100%;
+      height: 400px;
+    }
+  }
+}
+
+.star-ratings {
+  margin-right: 20px;
+}
